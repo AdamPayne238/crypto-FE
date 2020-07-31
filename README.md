@@ -1,1 +1,4 @@
 # crypto-FE
+
+STORE SETUP
+
