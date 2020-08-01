@@ -9,6 +9,10 @@ const CryptoList = () => {
     const coinData  = useStore()
     console.log("coinData CryptoList", coinData)
 
+    // SEARCH FILTER
+    // https://www.youtube.com/watch?v=Q8JyF3wpsHc
+
+
     return (
         <>
 
