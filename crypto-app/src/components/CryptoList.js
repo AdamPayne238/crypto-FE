@@ -7,9 +7,10 @@ import './CryptoList.scss'
 const CryptoList = () => {
 
     const coinData  = useStore()
-    console.log("coinData CryptoList", coinData)
+    // console.log("coinData CryptoList", coinData)
 
     const [ search, setSearch ] = useState('')
+    const [ selected, setSelected ] = useState()
 
     // SEARCH FILTER
     // https://www.youtube.com/watch?v=Q8JyF3wpsHc
@@ -19,8 +20,9 @@ const CryptoList = () => {
     })
 
     useEffect(() => {
+        console.log("selected", selected)
+    })
 
-    }, [search])
 
     return (
         <>
@@ -30,6 +32,7 @@ const CryptoList = () => {
         </div>
 
         <div className="search-bar">
+            {/* <h2> Search your favorite crypto</h2> */}
             <input type="text" placeholder="Search Crypto" onChange={event => setSearch(event.target.value)}  />
         </div>
 
@@ -40,7 +43,7 @@ const CryptoList = () => {
             {filteredCoins.map((data, index) => (
                 <>
                    
-                        <div className="crypto-coin">
+                        <div className="crypto-coin" onClick={ () => setSelected(index + 1)}>
 
                             <div className="name">
                                 <img src={data.image.small} alt="Crypto Coin Image"></img>
@@ -49,9 +52,9 @@ const CryptoList = () => {
 
                             <div className="crypto">
                                 <h2>{data.symbol.toUpperCase()}</h2>
-                                
                             </div>
 
+                            <p>Rank: {index + 1}</p>
                             <p>Market Cap: {data.market_data.market_cap.usd}</p>
                             <p>Current Price: ${data.market_data.current_price.usd}</p>
                             <p>24H High: ${data.market_data.high_24h.usd}</p>
@@ -62,6 +65,13 @@ const CryptoList = () => {
                     
                 </>
             ))}
+
+            {selected && (
+                <div className="selected-coin">
+                    <button onClick={() => setSelected(false)}>Close</button>
+                    <h1>Selected {selected}</h1>
+                </div>
+            )}
 
         </div>
         </>
