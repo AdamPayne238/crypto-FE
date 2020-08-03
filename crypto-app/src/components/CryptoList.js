@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {useStore} from '../global/Store'
 // import { Container, Row, Col } from 'reactstrap'
 import './CryptoList.scss'
@@ -9,9 +9,18 @@ const CryptoList = () => {
     const coinData  = useStore()
     console.log("coinData CryptoList", coinData)
 
+    const [ search, setSearch ] = useState('')
+
     // SEARCH FILTER
     // https://www.youtube.com/watch?v=Q8JyF3wpsHc
 
+    const filteredCoins = coinData.filter( coin => {
+        return coin.name.toLowerCase().includes( search.toLocaleLowerCase() )
+    })
+
+    useEffect(() => {
+
+    }, [search])
 
     return (
         <>
@@ -19,17 +28,22 @@ const CryptoList = () => {
         <div className="title">
              <h1>Top 50 Cryptocurrencies by Market Cap</h1>
         </div>
+
+        <div className="search-bar">
+            <input type="text" placeholder="Search Crypto" onChange={event => setSearch(event.target.value)}  />
+        </div>
+
         <div className="coin-container">
 
            
       
-            {coinData.map(data => (
+            {filteredCoins.map((data, index) => (
                 <>
                    
                         <div className="crypto-coin">
 
                             <div className="name">
-                                <img src={data.image.small}></img>
+                                <img src={data.image.small} alt="Crypto Coin Image"></img>
                                 <h1>{data.name}</h1>
                             </div>
 
