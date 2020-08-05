@@ -22,7 +22,7 @@ export function CoinDataProvider({ children }) {
           .catch(err => console.log(err))
       }, [])
 
-      console.log("coinData Store.js", coinData)
+      // console.log("coinData Store.js", coinData)
 
     return (
         <StoreContext.Provider value={coinData}>
