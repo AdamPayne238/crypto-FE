@@ -7,21 +7,19 @@ import './CryptoList.scss'
 const CryptoList = () => {
 
     const coinData  = useStore()
-    // console.log("coinData CryptoList", coinData)
-
     const [ search, setSearch ] = useState('')
     const [ selected, setSelected ] = useState()
-
-    // SEARCH FILTER
-    // https://www.youtube.com/watch?v=Q8JyF3wpsHc
-
-    const filteredCoins = coinData.filter( coin => {
-        return coin.name.toLowerCase().includes( search.toLocaleLowerCase() )
-    })
+    const [ filteredCoins, setFilteredCoins ] = useState([])
 
     useEffect(() => {
-        console.log("selected", selected)
-    })
+        setFilteredCoins(
+            coinData.filter(coin => {
+                return coin.name.toLowerCase().includes(search.toLocaleLowerCase()) 
+                        ||
+                       coin.symbol.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+            })
+        )
+    }, [search, coinData])
 
 
     return (
@@ -37,8 +35,6 @@ const CryptoList = () => {
         </div>
 
         <div className="coin-container">
-
-           
       
             {filteredCoins.map((data, index) => (
                 <>
