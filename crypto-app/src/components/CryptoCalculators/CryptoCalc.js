@@ -21,7 +21,6 @@ const CryptoCalc = () => {
       }, [])
 
 
-
     return(
         <div>
             <h1>Coin Calcs</h1>
