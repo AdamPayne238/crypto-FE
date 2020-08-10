@@ -5,6 +5,7 @@ import CryptoList from './components/CryptoList'
 import CryptoCalc from './components/CryptoCalculators/CryptoCalc'
 import CryptoChart from './components/CryptoChart'
 import { Route } from 'react-router-dom'
+import './App.scss'
 
 
 
