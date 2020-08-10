@@ -1,15 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './NavBar.scss'
 
 const NavBar = () => {
     
 
     return(
-        <div>
-            <h1>NavBar</h1>
-            <Link to="/">Crypto List</Link>
-            <Link to="calc">Crypto Calc</Link>
-            <Link to="chart">Crypto Chart</Link>
+        <div className="nav-container">
+            <Link to="/">List</Link>
+            <Link to="calc">Calculator</Link>
+            <Link to="chart">Chart</Link>
         </div>
     )
 }
