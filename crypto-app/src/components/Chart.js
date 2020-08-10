@@ -27,13 +27,15 @@ const Chart = ({ sparklineData }) => {
     .filter(data => data);
 
   return (
-    <LineChart width={1000} height={350} data={formattedData}>
-      <Line type="monotone" dataKey="value" stroke="#8884d8" />
-      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-      <XAxis dataKey="date" interval={4} />
-      <YAxis/>
-      <Tooltip />
-    </LineChart>
+    <div className="chart-container">
+      <LineChart width={1000} height={350} data={formattedData}>
+        <Line type="monotone" dataKey="value" stroke="#8884d8" />
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <XAxis dataKey="date" interval={4} />
+        <YAxis/>
+        <Tooltip />
+      </LineChart>
+    </div>
   );
 };
 
