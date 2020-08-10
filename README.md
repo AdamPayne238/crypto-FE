@@ -2,3 +2,7 @@
 
 STORE SETUP
 
+## COLORS
+#16263B
+#141619
+
