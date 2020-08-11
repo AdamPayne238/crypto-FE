@@ -15,17 +15,20 @@
     justify-content: center;
     
     input{
-        border: none;
+       
         background: #141619;
         text-align: center;
         padding: 0 1rem 0 1rem;
         width: 35%;
         margin: 0 15rem 0 15rem;
         height: 3rem;
-        // border-radius: 1rem;
         border-bottom: 2px solid #7BB4D4;
         font-size: 2rem;
+        border: none;
+        outline: none;
+        color: #7BB4D4;
     }
+
 
 }
 
