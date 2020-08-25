@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CoinCalculator from "./subs/CoinCalculator"
 import CoinConversion from "./subs/CoinConversion"
-// import EthereumCalculator from "./subs/EthereumCalculator"
-// import SatoshiCalculator from "./subs/SatoshiCalculator"
 import axios from 'axios'
 import { Route, Link } from 'react-router-dom'
 
@@ -37,16 +35,41 @@ const CryptoCalc = () => {
     return(
         <div>
 
-          <button onClick={() => setCoinId("bitcoin")}>Select Coin</button>
+          {/* <button onClick={() => setCoinId("bitcoin")}>Select Coin</button>
           <button onClick={() => selectCoin()}>Query Coin</button>
-
+ */}
 
             <div className="calc-nav">
-            <Link to="/calc/coin-calculator">Calculator</Link>
-            <Link to="/calc/coin-conversion">Conversion</Link>
+              <Link to="/calc/coin-calculator">Calculator</Link>
+              <Link to="/calc/coin-conversion">Conversion</Link>
             </div>
-            <Route  path="/calc/coin-calculator" component={CoinCalculator} coinData={coinData} />
-            <Route  path="/calc/coin-conversion" component={CoinConversion} />
+
+            {/* <Route  
+              path="/calc/coin-calculator" 
+              component={CoinCalculator} 
+              coinData={coinData} 
+              setCoinData={setCoinData}
+              coinId={coinId}
+              setCoinId={setCoinId}
+            /> */}
+
+
+            <Route  
+              path="/calc/coin-calculator" 
+                render={() => <CoinCalculator 
+                  coinData={coinData} 
+                  setCoinData={setCoinData}
+                  coinId={coinId}
+                  setCoinId={setCoinId}
+                  selectCoin={selectCoin}
+              />} />
+
+        
+
+            <Route  
+              path="/calc/coin-conversion" 
+              component={CoinConversion} 
+            />
     
         </div>
     )
