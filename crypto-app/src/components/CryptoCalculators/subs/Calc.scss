@@ -1,0 +1,56 @@
+
+// NAVBAR
+.calc-nav{
+
+    border-bottom: 2px solid #7BB4D4;
+    padding: 1rem 0 1rem 0;
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+    margin: auto;
+    a{
+        border: 2px dashed #7BB4D4;
+        border-radius: 1rem;
+        padding: 0.5rem;
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: #7BB4D4;
+        &:hover{
+            border: 2px solid #7BB4D4;
+        }
+    }
+}
+
+// COIN CALCULATOR JS
+.coin-calculator-container{
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;   
+
+    h1{
+        text-align: center;
+        color: #7BB4D4;
+    }
+    
+    p{
+        font-size: 2rem;
+        text-align: center;
+        color: #7BB4D4;
+    }
+        
+    input{
+     
+        background: #141619;
+        font-size: 1.8rem;
+        border: none;
+        outline: none;
+        color: #7BB4D4;
+    }
+
+}
+
+
+.coin-conversion-container{
+    background: blue;
+}

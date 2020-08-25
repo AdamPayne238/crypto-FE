@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import CoinCalculator from "./subs/CoinCalculator"
 import CoinConversion from "./subs/CoinConversion"
-import EthereumCalculator from "./subs/EthereumCalculator"
-import SatoshiCalculator from "./subs/SatoshiCalculator"
+// import EthereumCalculator from "./subs/EthereumCalculator"
+// import SatoshiCalculator from "./subs/SatoshiCalculator"
 import axios from 'axios'
+import { Route, Link } from 'react-router-dom'
+
 
 
 const CryptoCalc = () => {
@@ -23,11 +25,15 @@ const CryptoCalc = () => {
 
     return(
         <div>
-            <h1>Coin Calcs</h1>
-            <CoinCalculator coinData={coinData} setCoinData={setCoinData} />
-            <CoinConversion coinData={coinData} setCoinData={setCoinData} />
-            <EthereumCalculator coinData={coinData} setCoinData={setCoinData} />
-            <SatoshiCalculator coinData={coinData} setCoinData={setCoinData} />
+        
+
+            <div className="calc-nav">
+            <Link to="/calc/coin-calculator">Calculator</Link>
+            <Link to="/calc/coin-conversion">Conversion</Link>
+            </div>
+            <Route  path="/calc/coin-calculator" component={CoinCalculator} />
+            <Route  path="/calc/coin-conversion" component={CoinConversion} />
+    
         </div>
     )
 
