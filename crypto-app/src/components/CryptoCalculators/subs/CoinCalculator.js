@@ -12,15 +12,18 @@ const CoinCalculator = (props) => {
             <h1>Calculate Profit</h1>
 
             <div>
-                <p>If I invest <input type="text" placeholder="Choose your amount" name="Crypto" /></p>
+                <p>If I invest</p> 
+                <input type="text" placeholder="$0" name="Crypto" />
             </div>
 
             <div>
-                <p>in <input type="text" placeholder="Choose your coin" name="Crypto" /> today, </p>
+                <p>in</p>
+                    <input type="text" placeholder="Cryptocurrency" name="Crypto" /> 
+                {/* <p>today,</p> */}
             </div>
 
             <div>
-                <p>and it goes up to $<input type="text" placeholder="USD Amount" name="Crypto" /></p>
+                <p>and it goes up to</p><input type="text" placeholder="$0" name="Crypto" />
             </div>
 
             <div>
