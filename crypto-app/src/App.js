@@ -23,7 +23,7 @@ function App() {
 
           <NavBar />
           <Route exact path="/" component={CryptoList} />
-          <Route exact path="/calc" component={CryptoCalc} />
+          <Route path="/calc" component={CryptoCalc} />
           <Route exact path="/chart" component={CryptoChart} />
     
         </CoinDataProvider>

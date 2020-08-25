@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+import './Calc.scss'
+
 
 const CoinConversion = (props) => {
-    // Conver Coins
+
+    const [ usd, setUsd ] = useState(0)
 
     return(
-        <div>
-            <h1>CoinConversion</h1>
+        <div className="coin-conversion-container">
+            <h1>Crypto to USD</h1>
+            <input type="text" placeholder="Choose your coin" name="Crypto" />
+            <input type="text" placeholder="Choose your amount" name="Crypto" />
+            <p>USD: ${usd}</p>
         </div>
     )
 }
