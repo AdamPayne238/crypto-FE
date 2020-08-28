@@ -1,39 +1,56 @@
 import React, { useState, useEffect  } from 'react'
-
+import { useInputStr, useInputInt } from '../../../global/Hooks'
 import './Calc.scss'
 
 
 const CoinCalculator = (props) => {
 
-    const [ profit, setProfit ] = useState(0)
-   
+    // const [ profit, setProfit ] = useState(0)
+    const { value, bind, reset } = useInputStr('')
+    const { value: buy, bind: bindBuy, reset: resetBuy } = useInputInt(0)
+    const { value: profit, bind: profitBind, reset: profitReset } = useInputInt(0)
+
 
     console.log(props.coinId)
+    console.log("COIN DATA", props.coin)
 
 
+    async function handleSubmit(event) {
+        event.preventDefault()
+        
+        await props.selectCoin()
+        await props.setCoinId(value)
+        reset()
+
+        // resetBuy()
+        // resetProfit()
+    }
 
 
     return(
         <div className="coin-calculator-container">
             <h1>Calculate Profit</h1>
 
-            <button onClick={() => props.setCoinId("bitcoin")}>Select Coin</button>
-            <button onClick={() => props.selectCoin()}>Query Coin</button>
+            <form onSubmit={handleSubmit}>
+                
+                <div>
+                    <p>If I invest</p> 
+                    <input type="text" placeholder="$0" name="Crypto" />
+                </div>
 
-            <div>
-                <p>If I invest</p> 
-                <input type="text" placeholder="$0" name="Crypto" />
-            </div>
+                <div>
+                    <p>in</p>
+                        <input type="text" placeholder="Cryptocurrency" name="Crypto" {...bind}  /> 
+               
+                </div>
 
-            <div>
-                <p>in</p>
-                    <input type="text" placeholder="Cryptocurrency" name="Crypto" onClick={() => props.selectCoin()} /> 
-                {/* <p>today,</p> */}
-            </div>
-
-            <div>
-                <p>and it goes up to</p><input type="text" placeholder="$0" name="Crypto" />
-            </div>
+                <div>
+                    <p>and it goes up to</p><input type="text" placeholder="$0" name="Crypto" />
+                </div>
+{/* 
+                <input type="submit" value="Submit" /> */}
+                <button onClick={handleSubmit}>CLICK</button>
+            </form>
 
             <div>
                 <p>I will make ${profit}</p>
