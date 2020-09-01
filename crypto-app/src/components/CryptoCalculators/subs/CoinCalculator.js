@@ -8,22 +8,25 @@ const CoinCalculator = (props) => {
     // const [ profit, setProfit ] = useState(0)
     const { value, bind, reset } = useInputStr('')
     const { value: buy, bind: bindBuy, reset: resetBuy } = useInputInt(0)
-    const { value: profit, bind: profitBind, reset: profitReset } = useInputInt(0)
+    const { value: profit, bind: profitBind, reset: resetProfit } = useInputInt(0)
 
+    useEffect(() => {
+        console.log("coinId", props.coinId)
+        console.log("coinData", props.coinData)
+  
+      }, [props.coinId, props.coinData])
 
-    console.log(props.coinId)
-    console.log("COIN DATA", props.coin)
+    // console.log(props.coinId)
+    // console.log("COIN DATA", props.coin)
 
 
     async function handleSubmit(event) {
         event.preventDefault()
-        
-        await props.selectCoin()
-        await props.setCoinId(value)
+        props.setCoinId(value)
+        props.selectCoin()
         reset()
-
-        // resetBuy()
-        // resetProfit()
+        resetBuy()
+        resetProfit()
     }
 
 

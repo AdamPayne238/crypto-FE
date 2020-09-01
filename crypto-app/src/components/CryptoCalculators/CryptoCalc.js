@@ -19,12 +19,6 @@ const CryptoCalc = () => {
         .catch(err => console.log(err))
     }
 
-    useEffect(() => {
-      console.log("coinId", coinId)
-      console.log("coinData", coinData)
-
-    }, [coinId, coinData])
-
 
     return(
         <div>
