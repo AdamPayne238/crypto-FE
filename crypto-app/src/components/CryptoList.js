@@ -1,6 +1,6 @@
+import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import {useStore} from '../global/Store'
-// import { Container, Row, Col } from 'reactstrap'
+import { useStore } from '../global/Store'
 import './CryptoList.scss'
 
 
@@ -10,8 +10,12 @@ const CryptoList = () => {
     const [ search, setSearch ] = useState('')
     const [ selected, setSelected ] = useState()
     const [ filteredCoins, setFilteredCoins ] = useState([])
+    const [ coin, setCoin ] = useState()
 
     useEffect(() => {
+        console.log("SELECTED", selected)
+        console.log("COIN", coin)
+
         setFilteredCoins(
             coinData.filter(coin => {
                 return coin.name.toLowerCase().includes(search.toLocaleLowerCase()) 
@@ -19,7 +23,15 @@ const CryptoList = () => {
                        coin.symbol.toLocaleLowerCase().includes(search.toLocaleLowerCase())
             })
         )
-    }, [search, coinData])
+    }, [search, coinData, selected, coin])
+
+    function getCoin(){
+        // https://api.coingecko.com/api/v3/coins/bitcoin
+        axios
+            .get(`https://api.coingecko.com/api/v3/coins/${selected}`)
+            .then(res => setCoin(res.data))
+            .catch(err => console.log(err))
+    }
 
 
     return (
@@ -39,7 +51,7 @@ const CryptoList = () => {
             {filteredCoins.map((data, index) => (
                 <>
                    
-                        <div className="crypto-coin" onClick={ () => setSelected(index + 1)}>
+                        <div className="crypto-coin" onClick={ () => setSelected(data.id)}>
 
                             <div className="name">
                                 <img src={data.image.small} alt="Crypto Coin Image"></img>
