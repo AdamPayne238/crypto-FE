@@ -14,15 +14,14 @@ export function CoinDataProvider({ children }) {
 
     useEffect(()  => {
         axios
-          .get(
-            // full list "https://api.coingecko.com/api/v3/coins/list/"
-            "https://api.coingecko.com/api/v3/coins/"
-          )
+          .get("https://api.coingecko.com/api/v3/coins/")
           .then(res => setCoinData(res.data))
           .catch(err => console.log(err))
       }, [])
 
-      // console.log("coinData Store.js", coinData)
+
+
+      console.log("coinData Store.js", coinData)
 
     return (
         <StoreContext.Provider value={coinData}>
