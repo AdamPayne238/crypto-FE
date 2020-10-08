@@ -36,7 +36,6 @@ const CryptoList = () => {
 
     return (
         <>
-
         <div className="title">
              <h1>Top 50 Cryptocurrencies by Market Cap</h1>
         </div>
